@@ -1,0 +1,62 @@
+﻿html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+#renderCanvas {    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#score {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    font-size: 3em;
+    color: white;
+    font-family: "Segoe UI";
+}
+
+#speed {
+    position: absolute;
+    right: 30px;
+    top: 100px;
+    font-size: 1.1em;
+    color: white;
+    font-family: "Segoe UI";
+}
+
+#gameOver {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 4.0em;
+    color: white;
+    font-family: "Segoe UI";
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#gameOverText {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -70px;
+    cursor: default;
+}
+
+#scoreText {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    margin-top: -10px;
+    cursor: default;
+}
+
+.hidden {
+    display: none;
+}

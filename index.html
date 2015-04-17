@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- DEDICATO AI BABBI DEL 2015!!!! -->
+<head>
+    <title>Space Solids - Gianni G Modica</title>
+    <link href="index.css" rel="stylesheet" />
+    <link href="menu.css" rel="stylesheet" />
+    <script src="babylon.js"></script>
+</head>
+<body>
+    <canvas id="renderCanvas" class=""></canvas>   
+    <div id="HUB" class="">
+        <div id="score">Score: 0</div>
+        <div id="speed">Speed: 1</div>
+    </div>
+    <div id="gameOver" class="hidden">
+        <div id="gameOverText">Game Over</div>
+        <div id="scoreText"> Score: 0</div>
+        <div id="Ret" class="">
+            <button id="Button" class="" onclick="reload()">Retry</button>
+        </div>
+    </div>
+    <script src="./sources/index.js"></script>
+    <script src="./sources/editor.js"></script>
+    <script src="./sources/ship.js"></script>
+    <script src="./sources/booom.js"></script>
+    <script src="./sources/enemies.js"></script>
+    <script src="./sources/shots.js"></script>
+    <script src="./sources/interactions.js"></script>
+    <div id="Menu" class="">
+        <div id="Title"> Space Solids </div>
+        <div id="Buttons" class="">
+            <button id="Button" class="" onclick="PlayGame()">Play Game</button>
+            <button id="Button" class="" onclick="EditLevel()">Level Editor</button>
+        </div>
+        <div id="bottominfo" style="position: absolute; width: 100%; top: 80%; font-size: 0.3em;">Use "A" key for accelerate, "S" key for shoot. <br /> 
+        Use Arrows key (Up, Down, Left, Right) for move the ship.</div>
+        <div id="info" style="position: absolute; width: 100%; top: 95%; font-size: 0.3em;">For a better Experience press F11</div>
+    </div>
+    <div id="Editor" class="hidden">
+        <div id="EdTitle">Editor Mode</div>
+        <div id="info" style="position: absolute; width: 100%; top: 12%; font-size: 0.3em;">Choose your solids! Drag them into red panel</div>
+        <button id="Button" style="position: absolute; top: 85%; left: 35%;" onclick="Return()"> < Back </button>
+        <button id="Button" style="position: absolute; top: 85%; left: 55%;" onclick="PlayEdited()"> Play </button>
+    </div>
+</body>
+</html>
