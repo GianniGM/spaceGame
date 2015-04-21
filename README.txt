@@ -1,10 +1,8 @@
-Versione 1 - Miglioramenti:
+Versione 1:
 
-Essenziali:
+-Aggiunto Editor di livello
 
-* editor di livello
-
-Migliorie:
+Migliorie da apportare:
 - Danger Advise quando si è colpiti (da fare)
 - pause (started = true/false); (da fare)
 - cambiare la texture quando la navetta viene colpita (da fare)
