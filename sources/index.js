@@ -13,6 +13,8 @@ if (BABYLON.Engine.isSupported()) {
     var speed = 0.01;
     var scale = 1;
     var alpha;
+    var choosen;
+
     //var editormode = false;
     //document.getElementById("Menu").className = "hidden";
 
@@ -34,18 +36,23 @@ if (BABYLON.Engine.isSupported()) {
     //camera.setPosition(new BABYLON.Vector3(, 0, 0));
 
     var PlayGame = function () {
-        started = true;
         document.getElementById("Menu").className = "hidden";
         document.getElementById("HUB").className = "";
+        choosen = new Array();
+        choosen.push(1);
+        choosen.push(0);
+        choosen.push(4);
+        started = true;
     }
 
     var EditLevel = function () {
-//        editormode = true;
-        editormode();
+        //        editormode = true;
+        choosen = new Array();
         started = false;
         document.getElementById("Menu").className = "hidden";
         document.getElementById("Editor").className = "";
         document.getElementById("HUB").className = "hidden";
+        editormode();
     }
 
     var Return = function () {
@@ -57,6 +64,7 @@ if (BABYLON.Engine.isSupported()) {
             plan.dispose();
             plan2.dispose();
             plan3.dispose();
+            Meteorite.mesh = new Array();
             m0.dispose();
             m1.dispose();
             m2.dispose();
@@ -72,6 +80,8 @@ if (BABYLON.Engine.isSupported()) {
             m3 = null;
             m4 = null;
             m5 = null;
+            choosen = null;
+
         }
     }
 

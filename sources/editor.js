@@ -3,7 +3,6 @@ if (BABYLON.Engine.isSupported()) {
     var plan2 = null;
     var plan3 = null;
     var m0 = null, m1 = null, m2 = null, m3 = null, m4 = null, m5 = null;
-    var choosen = new Array();
 
     //se non è diverso da play() questa funzione va eliminata
     var PlayEdited = function () {
@@ -24,9 +23,8 @@ if (BABYLON.Engine.isSupported()) {
         m5.destroy = true;
     }
 
-    var editormode = function()  {
+    var editormode = function () {
         //costruire qui dentro tutto l'editor di livello...
-
         console.log("entrato nell'editormode");
 
         Meteorite.create(new BABYLON.Vector3(0, 2, 7), 0);
@@ -63,64 +61,80 @@ if (BABYLON.Engine.isSupported()) {
         plan3.position = new BABYLON.Vector3(-1.5, 1.3, 0);
         plan3.rotationQuaternion = BABYLON.Quaternion.RotationYawPitchRoll(1.6, 1.5, 0);
         plan3.material = material2;
+    }
 
-        var pickedMesh = null;
-        var startingPoint;
+    var pickedMesh = null;
+    var startingPoint;
 
-        // Add event listener
-        window.addEventListener("mousedown", function (evt) {
-            //mousedown = true;
+    // Add event listener
+    window.addEventListener("mousedown", function (evt) {
+        //mousedown = true;
 
-            var pickinfo = scene.pick(evt.clientX, evt.clientY, function (mesh) { return mesh == m0 || mesh == m1 || mesh == m2 || mesh == m3 || mesh == m4 || mesh == m5 }, null, camera);
-            if (pickinfo.hit) {
-                console.log("beccato!!");
-                startingPoint = pickinfo.pickedPoint;
-                pickedMesh = pickinfo.pickedMesh;
-            }
+        var pickinfo = scene.pick(evt.clientX, evt.clientY, function (mesh) { return mesh == m0 || mesh == m1 || mesh == m2 || mesh == m3 || mesh == m4 || mesh == m5 }, null, camera);
+        if (pickinfo.hit) {
+            console.log("beccato!!");
+            startingPoint = pickinfo.pickedPoint;
+            pickedMesh = pickinfo.pickedMesh;
+        }
 
-        });
+    });
 
-        window.addEventListener("mousemove", function (evt) {
-            //if ((pickedMesh == m0 || pickedMesh == m1 || pickedMesh == m2) && mousedown) {
-            var pick = scene.pick(evt.clientX, evt.clientY, function (mesh) { return mesh == m0 || mesh == m1 || mesh == m2 || mesh == m3 || mesh == m4 || mesh == m5 }, null, camera);
+    window.addEventListener("mousemove", function (evt) {
+        //if ((pickedMesh == m0 || pickedMesh == m1 || pickedMesh == m2) && mousedown) {
+        var pick = scene.pick(evt.clientX, evt.clientY, function (mesh) { return mesh == m0 || mesh == m1 || mesh == m2 || mesh == m3 || mesh == m4 || mesh == m5 }, null, camera);
 
-            if (!startingPoint) {
-                return;
-            }
+        if (!startingPoint) {
+            return;
+        }
 
+        if (pickedMesh != null) {
             var current = pick.pickedPoint;
 
             if (!current) {
                 return;
             }
 
-            if (pickedMesh != null) {
-                var diff = current.subtract(startingPoint);
-                pickedMesh.position.addInPlace(diff);
-                pickedMesh.position.x = 0.5;
-                startingPoint = current;
+            var diff = current.subtract(startingPoint);
+            pickedMesh.position.addInPlace(diff);
+            pickedMesh.position.x = 0.5;
+            startingPoint = current;
 
-            }
-            //pickedMesh.position = new BABYLON.Vector3(0.50, -evt.clientY * 0.0004, evt.clientX * 0.0018);
+        }
+        //pickedMesh.position = new BABYLON.Vector3(0.50, -evt.clientY * 0.0004, evt.clientX * 0.0018);
 
 
-        });
+    });
 
-        window.addEventListener("mouseup", function (evt) {
-            var pick = scene.pick(evt.clientX, evt.clientY, function (mesh) { return mesh == m0 || mesh == m1 || mesh == m2 || mesh == m3 || mesh == m4 || mesh == m5 }, null, camera);
+    window.addEventListener("mouseup", function (evt) {
+        var pick = scene.pick(evt.clientX, evt.clientY, function (mesh) { return mesh == m0 || mesh == m1 || mesh == m2 || mesh == m3 || mesh == m4 || mesh == m5 }, null, camera);
 
-            if (pickedMesh != null) {
-                if (pick.pickedPoint.y > -5 && pick.pickedPoint.y < 5) {
-                    //aggiungi
-                    choosen.push(pickedMesh.type);
-                } else {
-                    choosen.splice(pickedMesh.type);
+        if (pickedMesh != null &&  pick.pickedPoint != null) {
+            if (pick.pickedPoint.z > -5 && pick.pickedPoint.z < 5) {
+                //aggiungi
+                var bool = true;
+                for (var i = 0; i < choosen.length; i++) {
+                    if (choosen[i] == pickedMesh.type) {
+                        bool = false;
+                    }
                 }
-                pickedMesh = null;
-            }
 
-        });
+                if (bool) {
+                    choosen.push(pickedMesh.type);
+                    console.log("scelto!!!");
+                }
+            } else {
+                for (var i = 0; i < choosen.length; i++) {
+                    if (choosen[i] == pickedMesh.type) {
+                        choosen.splice(i, 1);
+                        console.log("rimosso");
+                    }
+                }
+            }
+        }
+        
+        pickedMesh = null;
+    });
        
     //fine funzione editor mode
-    }
+
 }
