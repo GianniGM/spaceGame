@@ -1,6 +1,6 @@
 //interactions--------------------------------------------------------------------
 var acceleration = false;
-var ticklose = 7;
+var ticklose = 10;
 var lose = false;
 var render = true;
 var started = false;
@@ -136,12 +136,20 @@ if (BABYLON.Engine.isSupported()) {
         }
     };
 
+    var played = false;
     // Lose
     var onLose = function () {
         
-       // displayState(); 
-        document.getElementById("gameOver").className = "";
-        document.getElementById("scoreText").innerHTML = "Score: " + score;
+        if (!played) {
+            document.getElementById("song").pause();
+            document.getElementById("alarm").pause();
+            document.getElementById("gover").play();
+            played = true;
+        
+
+            document.getElementById("gameOver").className = "";
+            document.getElementById("scoreText").innerHTML = "Score: " + score;
+        }
 
         render = false;
 
@@ -206,6 +214,7 @@ if (BABYLON.Engine.isSupported()) {
                 Booom(ball);
                 ball.visibility = 1;
                 lose = true;
+                document.getElementById("alarm").play();
                 //onLose();
             }
 
@@ -217,7 +226,7 @@ if (BABYLON.Engine.isSupported()) {
                         Meteorite.mesh[i].destroy = true;
                         Shot.Shots[j].dispose();
                         Shot.Shots.splice(j, 1);
-                        score++;
+                        score=score + 1 + Math.floor(accShip / 500);
 
                         console.log("disposing collision successfully" + j);
                     }

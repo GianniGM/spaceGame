@@ -43,6 +43,7 @@ if (BABYLON.Engine.isSupported()) {
         choosen.push(0);
         choosen.push(4);
         started = true;
+        document.getElementById("song").play();
     }
 
     var EditLevel = function () {

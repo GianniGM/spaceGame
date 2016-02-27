@@ -8,16 +8,20 @@
     <script src="babylon.js"></script>
 </head>
 <body>
-    <canvas id="renderCanvas" class=""></canvas>   
+    <canvas id="renderCanvas" class=""></canvas>
+    <audio id="song" src="./audio/PROVISIONALSONG.mp3" type="audio/mpeg"> </audio>
+    <audio id="alarm" src="./audio/alarm.mp3" type="audio/mpeg"> </audio>
+    <audio id="gover" src="./audio/gover.mp3" type="audio/mpeg"> </audio>
+
     <div id="HUB" class="">
         <div id="score">Score: 0</div>
         <div id="speed">Speed: 1</div>
     </div>
     <div id="gameOver" class="hidden">
-        <div id="gameOverText">Game Over</div>
+        <div id="gameOverText">Game Over!</div>
         <div id="scoreText"> Score: 0</div>
         <div id="Ret" class="">
-            <button id="Button" class="" onclick="reload()">Retry</button>
+            <button id="Button" class="" onclick="reload()">RETRY!</button>
         </div>
     </div>
     <script src="./sources/index.js"></script>
@@ -33,7 +37,7 @@
             <button id="Button" class="" onclick="PlayGame()">Play Game</button>
             <button id="Button" class="" onclick="EditLevel()">Level Editor</button>
         </div>
-        <div id="bottominfo" style="position: absolute; width: 100%; top: 80%; font-size: 0.3em;">Use "A" key for accelerate, "S" key for shoot. <br /> 
+        <div id="bottominfo" style="position: absolute; width: 100%; top: 80%; font-size: 0.3em;">Use "A" key for accelerate, "S" key for shoot. <br />
         Use Arrows key (Up, Down, Left, Right) for move the ship.</div>
         <div id="info" style="position: absolute; width: 100%; top: 95%; font-size: 0.3em;">For a better Experience press F11</div>
     </div>

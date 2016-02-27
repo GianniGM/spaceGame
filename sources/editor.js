@@ -21,6 +21,8 @@ if (BABYLON.Engine.isSupported()) {
         m3.destroy = true;
         m4.destroy = true;
         m5.destroy = true;
+        document.getElementById("song").play();
+
     }
 
     var editormode = function () {

@@ -18,7 +18,7 @@
     top: 30px;
     font-size: 3em;
     color: white;
-    font-family: "Segoe UI";
+    font-family: Impact, Charcoal, sans-serif;
 }
 
 #speed {
@@ -27,7 +27,7 @@
     top: 100px;
     font-size: 1.1em;
     color: white;
-    font-family: "Segoe UI";
+    font-family: Impact, Charcoal, sans-serif;
 }
 
 #gameOver {
@@ -36,7 +36,7 @@
     height: 100%;
     font-size: 4.0em;
     color: white;
-    font-family: "Segoe UI";
+    font-family: Impact, Charcoal, sans-serif;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
 }
